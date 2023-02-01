@@ -31,6 +31,7 @@
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
     <uses-permission android:name="com.android.gallery3d.permission.GALLERY_PROVIDER" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <supports-screens android:smallScreens="false"
             android:normalScreens="true" android:largeScreens="true"
@@ -247,6 +248,16 @@
         <service
                 android:name=".filtershow.pipeline.ProcessingService"
                 android:exported="false" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
 
         <activity
             android:name="com.android.gallery3d.filtershow.FilterShowActivity"
